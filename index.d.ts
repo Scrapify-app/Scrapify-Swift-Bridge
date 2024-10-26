@@ -1,0 +1,1 @@
+declare function searchProcessByPid(pid: number, callback: (link?: string) => void): void;

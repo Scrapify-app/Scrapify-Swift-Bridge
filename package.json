@@ -1,0 +1,26 @@
+{
+  "name": "@scrapify/swift-bridge",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "swift:build": "swiftc Sources/Bridge.swift -emit-library -static -cxx-interoperability-mode=default -emit-objc-header -o .build/swift-bridge.a",
+    "clean": "./node_modules/.bin/cmake-js clean",
+    "prepublishOnly": "npm run clean && npm run swift:build && ./node_modules/.bin/cmake-js compile --runtime=electron --runtime-version=33.0.2 --dist-url=https://electronjs.org/headers --out .build/node"
+  },
+  "keywords": [],
+  "files": [
+    ".build/node/Release/swift-bridge.node",
+    "index.js",
+    "index.d.ts",
+    "package.json",
+    "package-lock.json"
+  ],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^22.8.1",
+    "cmake-js": "^7.3.0"
+  }
+}
